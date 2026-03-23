@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ToastieOfficial</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  height: 100vh;
+  background: radial-gradient(circle at top, #0a0f2c, #000);
+  color: white;
+  overflow: hidden;
+}
+
+/* STARS */
+body::before {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  background: transparent url('https://www.transparenttextures.com/patterns/stardust.png');
+  animation: moveStars 60s linear infinite;
+}
+
+@keyframes moveStars {
+  from { transform: translate(0,0); }
+  to { transform: translate(-500px, -500px); }
+}
+
+/* CENTER CONTENT */
+.container {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  top: 50%;
+  transform: translateY(-50%);
+  padding: 20px;
+}
+
+/* TITLE */
+.title {
+  font-size: 2.7rem;
+  margin-bottom: 25px;
+  text-shadow: 0 0 10px #00f7ff, 0 0 25px #00f7ff, 0 0 50px #00f7ff;
+  animation: glowPulse 2s infinite alternate;
+}
+
+@keyframes glowPulse {
+  from { text-shadow: 0 0 10px #00f7ff; }
+  to { text-shadow: 0 0 25px #00f7ff, 0 0 60px #00f7ff; }
+}
+
+/* BUTTONS */
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.links a {
+  text-decoration: none;
+  padding: 15px;
+  border-radius: 12px;
+  background: #111;
+  color: white;
+  border: 2px solid #444;
+  transition: 0.3s;
+  font-size: 1.1rem;
+}
+
+/* HOVER GLOW */
+.links a:hover {
+  border-color: #00f7ff;
+  box-shadow: 0 0 15px #00f7ff, 0 0 30px #00f7ff;
+  transform: scale(1.05);
+}
+
+/* FLOATING TOASTIES */
+.toast {
+  position: absolute;
+  font-size: 28px;
+  animation: float linear infinite;
+}
+
+@keyframes float {
+  from {
+    transform: translateY(100vh) rotate(0deg);
+  }
+  to {
+    transform: translateY(-10vh) rotate(360deg);
+  }
+}
+
+/* ANNOUNCEMENT BAR */
+.announcement {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #111;
+  border-top: 2px solid #00f7ff;
+  padding: 10px;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+/* RESPONSIVE */
+@media (min-width: 600px) {
+  .links {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .links a {
+    width: 200px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- FLOATING TOASTIES -->
+<div class="toast" style="left:10%; animation-duration:12s;">🍞😎</div>
+<div class="toast" style="left:30%; animation-duration:9s;">🍞😎</div>
+<div class="toast" style="left:50%; animation-duration:14s;">🍞😎</div>
+<div class="toast" style="left:70%; animation-duration:11s;">🍞😎</div>
+<div class="toast" style="left:90%; animation-duration:13s;">🍞😎</div>
+
+<div class="container">
+  <h1 class="title">🚀 ToastieOfficial</h1>
+
+  <div class="links">
+    <a href="https://discord.gg/Kgmcaf49en" target="_blank">💬 Join Discord</a>
+    <a href="https://www.youtube.com/@ToastieOfficiall" target="_blank">▶️ Subscribe on YouTube</a>
+    <a href="https://www.roblox.com/users/4028852307/profile" target="_blank">🎮 Follow on Roblox</a>
+  </div>
+</div>
+
+<!-- ANNOUNCEMENTS -->
+<div class="announcement" id="announcementText">
+  🚀 Welcome to ToastieOfficial!
+</div>
+
+<script>
+const messages = [
+  "🚀 Welcome to ToastieOfficial!",
+  "🎮 Roblox joins are now open for followers!",
+  "⭐ Follow the Roblox account to stay updated!",
+  "💬 Join the Discord community and hang out!",
+  "▶️ Subscribe on YouTube for awesome content!",
+  "🔥 Stay tuned for new updates and events!"
+];
+
+let index = 0;
+const announcement = document.getElementById("announcementText");
+
+setInterval(() => {
+  index = (index + 1) % messages.length;
+  announcement.textContent = messages[index];
+}, 3000);
+</script>
+
+</body>
+</html>
